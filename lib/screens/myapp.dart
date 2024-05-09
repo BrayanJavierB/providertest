@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'second_route.dart';
-import 'counter_model.dart';
+import 'package:modooscuro/screens/second_route.dart';
 import 'ThemeProvider.dart';
+import 'counter_model.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -21,7 +21,7 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Has pulsado el botón tantas veces:',
             ),
             Consumer<CounterModel>(
               builder: (context, model, child) {
@@ -34,16 +34,10 @@ class MyHomePage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Provider.of<ThemeProvider>(context, listen: false).changeTheme(ThemeMode.light);
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .toggleTheme();
               },
-              child: Text('Modo Claro'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Provider.of<ThemeProvider>(context, listen: false).changeTheme(ThemeMode.dark);
-              },
-              child: Text('Modo Oscuro'),
+              child: Text('Cambiar fondo'),
             ),
             SizedBox(height: 20),
             ElevatedButton(

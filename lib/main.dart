@@ -1,13 +1,8 @@
-
 import 'package:flutter/material.dart';
-// Importamos la biblioteca Flutter para widgets y Material Design
-import 'package:modooscuro/screens/ThemeProvider.dart';
-import 'package:modooscuro/screens/myapp.dart';
 import 'package:provider/provider.dart';
-
-import 'package:modooscuro/screens/counter_model.dart';
- // Importamos la biblioteca 'provider' para administrar el estado
-
+import 'screens/ThemeProvider.dart';
+import 'screens/myapp.dart';
+import 'screens/counter_model.dart';
 
 void main() {
   runApp(
@@ -26,12 +21,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(), // Establece el tema claro como predeterminado
-      darkTheme: ThemeData.dark(), // Establece el tema oscuro
-      home: const MyHomePage(title: 'I become the true king'),
+      themeMode: themeProvider.themeMode,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      home: const MyHomePage(title: 'Fondo Oscura y Blanca'),
     );
   }
 }
